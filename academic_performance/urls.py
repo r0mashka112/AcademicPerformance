@@ -12,10 +12,10 @@ from drf_spectacular.views import (
 
 router = SimpleRouter()
 
-router.register('api/students', StudentViewSet)
-router.register('api/groups', GroupViewSet)
-router.register('api/specialities', SpecialityViewSet)
-router.register('api/disciplines', DisciplineViewSet)
+router.register('api/students', StudentViewSet, basename = 'student')
+router.register('api/groups', GroupViewSet, basename = 'group')
+router.register('api/specialities', SpecialityViewSet, basename = 'speciality')
+router.register('api/disciplines', DisciplineViewSet, basename = 'discipline')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
