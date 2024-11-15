@@ -43,3 +43,10 @@ class DisciplineViewSet(ModelViewSet):
     serializer_class = DisciplineSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
+
+
+class AcademicPerformanceViewSet(ModelViewSet):
+    queryset = AcademicPerformance.objects.all()
+    serializer_class = AcademicPerformanceSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'

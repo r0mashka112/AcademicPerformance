@@ -28,3 +28,10 @@ class DisciplineSerializer(ModelSerializer):
     class Meta:
         model = Discipline
         fields = '__all__'
+
+
+class AcademicPerformanceSerializer(ModelSerializer):
+
+    class Meta:
+        model = AcademicPerformance
+        fields = '__all__'

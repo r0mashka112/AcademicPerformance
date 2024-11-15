@@ -17,6 +17,8 @@ router.register('api/groups', GroupViewSet, basename = 'group')
 router.register('api/specialities', SpecialityViewSet, basename = 'speciality')
 router.register('api/disciplines', DisciplineViewSet, basename = 'discipline')
 
+router.register('api/academic-performance', AcademicPerformanceViewSet, basename = 'academic-performance')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(
