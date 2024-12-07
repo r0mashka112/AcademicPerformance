@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from students.models import Student, Group, Speciality, Discipline, AcademicPerformance
 from students.serializers import StudentSerializer, GroupSerializer, SpecialitySerializer, DisciplineSerializer, \
-    AcademicPerformanceSerializer
+    AcademicPerformanceSerializer, FormOfEducation
 
 
 class StudentSerializerTestCase(TestCase):
@@ -18,13 +18,19 @@ class StudentSerializerTestCase(TestCase):
             speciality = Speciality.objects.get(id = 2)
         )
 
+        form = FormOfEducation.objects.create(
+            id = 1,
+            form = 'Очная'
+        )
+
         student_1 = Student.objects.create(
             id = 1,
             first_name = 'Иван',
             last_name = 'Иванов',
             middle_name = 'Иванович',
             year_of_entry = 2022,
-            form_of_education = 'Очная',
+            year_of_ending = 2026,
+            form_of_education = FormOfEducation.objects.get(id = 1),
             group = Group.objects.get(id = 2)
         )
 
@@ -34,7 +40,8 @@ class StudentSerializerTestCase(TestCase):
             last_name = 'Петров',
             middle_name = 'Александрович',
             year_of_entry = 2022,
-            form_of_education = 'Очная',
+            year_of_ending = 2028,
+            form_of_education = FormOfEducation.objects.get(id = 1),
             group = Group.objects.get(id = 2)
         )
 
@@ -47,7 +54,8 @@ class StudentSerializerTestCase(TestCase):
                 'last_name' : 'Иванов',
                 'middle_name' : 'Иванович',
                 'year_of_entry' : 2022,
-                'form_of_education' : 'Очная',
+                'year_of_ending' : 2026,
+                'form_of_education' : 1,
                 'group' : 2
             },
 
@@ -57,7 +65,8 @@ class StudentSerializerTestCase(TestCase):
                 'last_name' : 'Петров',
                 'middle_name' : 'Александрович',
                 'year_of_entry' : 2022,
-                'form_of_education' : 'Очная',
+                'year_of_ending' : 2028,
+                'form_of_education' : 1,
                 'group' : 2
             }
         ]
@@ -201,13 +210,19 @@ class AcademicPeriodSerializerTestCase(TestCase):
             speciality = Speciality.objects.get(id=1)
         )
 
+        form = FormOfEducation.objects.create(
+            id = 1,
+            form = 'Очная'
+        )
+
         student_1 = Student.objects.create(
             id = 1,
             first_name = 'Иван',
             last_name = 'Иванов',
             middle_name = 'Иванович',
             year_of_entry = 2021,
-            form_of_education = 'Очная',
+            year_of_ending = 2025,
+            form_of_education = FormOfEducation.objects.get(id = 1),
             group = Group.objects.get(id = 1)
         )
 
