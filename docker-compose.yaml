@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+    container_name: docker_compose_app
+    command: python academic_performance/manage.py runserver 0.0.0.0:8000
+    volumes: 
+      - .:/app
+      - ./academic_performance/db.sqlite3:/app/academic_performance/db.sqlite3
+    ports:
+      - "8000:8000"
